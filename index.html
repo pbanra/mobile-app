@@ -1,0 +1,98 @@
+<!DOCTYPE html>  
+<html> 
+<head>
+        <meta name="apple-mobile-web-app-capable" content="yes">   
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">   
+<meta name="MobileOptimized" content="320"/>   
+<meta name="viewport" content="width=device-width, initial-scale=1.0">        
+<title>WatzThis?</title>  
+<script> 
+var light = new Array(); 
+var t; 
+var color=0; 
+var flipping=0; 
+var speed;  
+light[0] = 'violet'; 
+light[1] = 'indigo'; 
+light[2] = "deepskyblue"; 
+light[3] = "green"; 
+light[4] = "yellow"; 
+light[5] = "orange";
+light[6] = "red";  
+function flip(whichway){   
+   document.body.style.backgroundColor = light[whichway];   
+   stopFlip(); 
+}      
+function autoFlip() { 
+   document.body.style.backgroundColor = light[color];
+   if (color < light.length-1) {         
+     color++;     
+   } else {         
+     color=0;     
+   }     
+t = setTimeout("autoFlip()",speed); 
+} 
+function doAutoFlip(changespeed){     
+ if (!flipping){         
+   flipping=1;   
+   speed=changespeed;      
+   autoFlip();     
+ }    
+} 
+function stopFlip() {     
+ clearTimeout(t);     
+ flipping=0; 
+} 
+</script>    
+
+<style>
+        body {
+          font-family:arial, helvetica;
+          text-align: center;
+        }
+        #container {}
+        #directions, #flashlight, #danceparty {
+          margin:4px;
+        }
+         ol {
+          display: inline-block;
+          margin: 0 auto;
+          text-align:left;
+         }
+         .bigButton {
+            font-size:18px;
+        }
+        </style>
+</head>  
+<body>
+    
+ 
+        <h1>WatzThis?</h1>
+        <div id="directions">
+        <ol>
+          <li>Use the top row of buttons to turn the flashlight for rainbow colors.</li>
+          <li>Use the 2nd row of buttons to turn on and off your automatic flashing color light dance party.</li>
+        </ol>
+        </div>
+
+<div id="container"> 
+
+<div id="flashlight">
+<input type="button" id="VIOLET" class="bigButton" value="violet" onclick="flip(0);"> 
+<input type="button" id="INDIGO" class="bigButton" value="indigo" onclick="flip(1);">
+<input type="button" id="DEEPSKYBLUE" class="bigButton" value="blue" onclick="flip(2);"> 
+<input type="button" id="GREEN" class="bigButton" value="green" onclick="flip(3);">  
+<input type="button" id="YELLOW" class="bigButton" value="yellow" onclick="flip(4);"> 
+<input type="button" id="ORANGE" class="bigButton" value="orange" onclick="flip(5);">  
+<input type="button" id="RED" class="bigButton" value="red" onclick="flip(6);"> 
+
+</div> 
+<div id="danceparty"> 
+<input type="button" id="AUTO" class="bigButton" value="AUTO" onclick="doAutoFlip(1500);"> 
+<input type="button" id="STOP" class="bigButton" value="STOP" onclick="stopFlip();"> 
+</div>     
+</div>
+</body> 
+</html> 
